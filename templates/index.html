@@ -156,6 +156,7 @@ margin-left:5px;
 </div>
 
 <!-- Product Grid -->
+  
 
 <div class="container">
 
@@ -169,7 +170,7 @@ margin-left:5px;
 <div class="badge">{{p.badge}}</div>
 {% endif %}
 
-<img src="{{ url_for('static', filename='images/' + product.image) }}">
+<img src="{{ url_for('static', filename='images/' + products.image) }}">
 <h3>{{p.name}}</h3>
 
 <p class="price">₹{{p.price}}</p>
