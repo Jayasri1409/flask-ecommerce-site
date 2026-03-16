@@ -160,7 +160,7 @@ margin-left:5px;
 
 <div class="container">
 
-{% for product in products %}
+{% for p in products %}
 
 <div class="product-card">
 
@@ -170,7 +170,7 @@ margin-left:5px;
 <div class="badge">{{p.badge}}</div>
 {% endif %}
 
-<img src="{{ url_for('static', filename='images/' + products.image) }}">
+<img src="{{ url_for('static', filename='images/' + product.image) }}">
 <h3>{{p.name}}</h3>
 
 <p class="price">₹{{p.price}}</p>
