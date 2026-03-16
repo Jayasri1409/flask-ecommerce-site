@@ -170,7 +170,7 @@ margin-left:5px;
 <div class="badge">{{p.badge}}</div>
 {% endif %}
 
-<img src="{{ url_for('static', filename='images/' + product.image) }}">
+<img src="{{ url_for('static', filename='images/' + p.image) }}">
 <h3>{{p.name}}</h3>
 
 <p class="price">₹{{p.price}}</p>
