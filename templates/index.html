@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+<title>Jaya Sri Tech Store</title>
+
+<style>
+
+body{
+font-family:Arial;
+background:#f4f6f9;
+margin:0;
+}
+
+/* Navbar */
+
+.navbar{
+background:#1a1a1a;
+color:white;
+padding:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.navbar h2{
+margin:0;
+}
+
+/* Search */
+
+.search{
+padding:6px;
+border-radius:5px;
+border:none;
+}
+
+/* Product Grid */
+
+.container{
+width:90%;
+margin:auto;
+margin-top:30px;
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+gap:25px;
+}
+
+/* Product Card */
+
+.product-card{
+background:white;
+padding:15px;
+border-radius:10px;
+box-shadow:0 4px 10px rgba(0,0,0,0.1);
+text-align:center;
+transition:0.3s;
+position:relative;
+}
+
+.product-card:hover{
+transform:translateY(-8px);
+}
+
+/* Image Zoom */
+
+.product-card img{
+width:160px;
+height:160px;
+object-fit:contain;
+transition:transform 0.3s;
+}
+
+.product-card:hover img{
+transform:scale(1.1);
+}
+
+/* Category */
+
+.category{
+position:absolute;
+top:10px;
+left:10px;
+background:#ff9800;
+color:white;
+padding:3px 8px;
+font-size:12px;
+border-radius:4px;
+}
+
+/* Badge */
+
+.badge{
+position:absolute;
+top:10px;
+right:10px;
+background:#e53935;
+color:white;
+padding:4px 8px;
+font-size:12px;
+border-radius:4px;
+}
+
+/* Price */
+
+.price{
+color:#007bff;
+font-weight:bold;
+}
+
+.old-price{
+text-decoration:line-through;
+color:gray;
+font-size:14px;
+}
+
+/* Rating */
+
+.rating{
+color:orange;
+}
+
+/* Buttons */
+
+.btn{
+display:inline-block;
+margin-top:8px;
+padding:8px 14px;
+background:#007bff;
+color:white;
+text-decoration:none;
+border-radius:5px;
+border:none;
+cursor:pointer;
+}
+
+.cart-btn{
+background:#28a745;
+margin-left:5px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- Navbar -->
+
+<div class="navbar">
+
+<h2>Jayasri Tech Store</h2>
+
+<input class="search" type="text" placeholder="Search products">
+
+</div>
+
+<!-- Product Grid -->
+
+<div class="container">
+
+{% for p in products %}
+
+<div class="product-card">
+
+<div class="category">{{p.category}}</div>
+
+{% if p.badge %}
+<div class="badge">{{p.badge}}</div>
+{% endif %}
+
+<img src="{{ url_for('static', filename='images/' + product.image) }}">
+<h3>{{p.name}}</h3>
+
+<p class="price">₹{{p.price}}</p>
+
+<p class="old-price">₹{{p.old_price}}</p>
+
+<div class="rating">
+★★★★☆
+</div>
+
+<a class="btn" href="/product/{{p.id}}">View Details</a>
+
+<button class="btn cart-btn" onclick="addToCart()">Add to Cart</button>
+
+</div>
+
+{% endfor %}
+
+</div>
+
+<!-- Cart Message -->
+
+<div id="cartMessage" style="
+display:none;
+position:fixed;
+bottom:20px;
+right:20px;
+background:#28a745;
+color:white;
+padding:12px 18px;
+border-radius:6px;
+font-size:14px;
+box-shadow:0 4px 10px rgba(0,0,0,0.2);
+">
+Added to your cart ✓
+</div>
+
+<!-- Footer -->
+
+<footer style="text-align:center;margin-top:40px;padding:15px;background:#1a1a1a;color:white;">
+© 2026 Jayasri Tech Store
+</footer>
+
+<!-- JavaScript -->
+
+<script>
+
+function addToCart(){
+
+let message = document.getElementById("cartMessage");
+
+message.style.display = "block";
+
+setTimeout(function(){
+message.style.display = "none";
+},2000);
+
+}
+
+</script>
+
+</body>
+</html>
