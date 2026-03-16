@@ -52,7 +52,7 @@ products = [
 
 @app.route("/")
 def home():
-    return render_template("index.html", products=products)
+    return render_template("index.html", product=products)
 
 
 @app.route("/product/<int:id>")
